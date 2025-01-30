@@ -40,7 +40,9 @@ export const App = () => {
               setResetClass('button is-danger');
               setSortByLengthClass('button is-success is-light');
               setGoods(
-                goods.sort((good1, good2) => good1[0].localeCompare(good2[0])),
+                [...goodsFromServer].sort((good1, good2) =>
+                  good1[0].localeCompare(good2[0]),
+                ),
               );
             }
           }}
@@ -78,31 +80,31 @@ export const App = () => {
             ) {
               setReverseClass('button is-warning');
               setResetClass('button is-danger');
-              setGoods(goods.toReversed());
+              setGoods(goods.reverse());
             } else if (
               reverseClass === 'button is-warning is-light' &&
               sortAlphabetClass === 'button is-info'
             ) {
               setReverseClass('button is-warning');
-              setGoods(goods.toReversed());
+              setGoods(goods.reverse());
             } else if (
               reverseClass === 'button is-warning' &&
               sortAlphabetClass === 'button is-info'
             ) {
               setReverseClass('button is-warning is-light');
-              setGoods(goods.toReversed());
+              setGoods(goods.reverse());
             } else if (
               reverseClass === 'button is-warning is-light' &&
               sortByLengthClass === 'button is-success'
             ) {
               setReverseClass('button is-warning');
-              setGoods(goods.toReversed());
+              setGoods(goods.reverse());
             } else if (
               reverseClass === 'button is-warning' &&
               sortByLengthClass === 'button is-success'
             ) {
               setReverseClass('button is-warning is-light');
-              setGoods(goods.toReversed());
+              setGoods(goods.reverse());
             } else if (
               reverseClass === 'button is-warning' &&
               sortAlphabetClass === 'button is-info is-light' &&
@@ -110,7 +112,7 @@ export const App = () => {
             ) {
               setReverseClass('button is-warning is-light');
               setResetClass('button is-danger is-light');
-              setGoods(goods.toReversed());
+              setGoods(goods.reverse());
             }
           }}
         >
@@ -136,7 +138,9 @@ export const App = () => {
 
       <ul>
         {goods.map(good => (
-          <li data-cy="Good">{good}</li>
+          <li data-cy="Good" key={good}>
+            {good}
+          </li>
         ))}
       </ul>
     </div>
