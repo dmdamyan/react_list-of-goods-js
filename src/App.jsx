@@ -40,9 +40,7 @@ export const App = () => {
               setResetClass('button is-danger');
               setSortByLengthClass('button is-success is-light');
               setGoods(
-                [...goodsFromServer].sort((good1, good2) =>
-                  good1[0].localeCompare(good2[0]),
-                ),
+                goods.sort((good1, good2) => good1[0].localeCompare(good2[0])),
               );
             }
           }}
